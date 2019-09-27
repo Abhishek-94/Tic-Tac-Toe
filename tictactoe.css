@@ -1,0 +1,27 @@
+h1 {
+        text-align: center;
+    }
+.mainbox{
+    height:300px;
+    width:300px;
+    margin:auto;
+    border:1px solid;
+    
+    
+}
+.box{
+    height:100px;
+    width:100px;
+    display: inline-block;
+    border:1px solid;
+    padding:1px;
+    vertical-align:bottom;
+    background: lightblue;
+    color: green;
+    font-size: 150%
+}
+
+#winnerbox{
+    height:100px;
+    width:100px;
+}
