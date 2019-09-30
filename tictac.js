@@ -1,4 +1,3 @@
-//Tic Tac Toe
 class Tictac {
   constructor() {
     this.elemObj = {};
@@ -12,6 +11,7 @@ class Tictac {
     this.createUI();
     this.gameStart();
   }
+
   createUI() {
     //Create UI of TicTacToe
     let mainBox = document.createElement("div");
@@ -23,11 +23,12 @@ class Tictac {
       mainBox.appendChild(this.elemObj[i]);
     }
     let winnerBox = document.createElement("div");
-    //mainBox.setAttribute("id", "winnerBox");
+    winnerBox.setAttribute("id", "winnerBox");
     document.body.appendChild(mainBox);
     document.body.appendChild(winnerBox);
     
   }
+
   gameStart() {
     let x = document.getElementsByClassName("box");
     let y = Array.from(x);//Converting nodelist into Array
@@ -39,12 +40,12 @@ class Tictac {
         else y[i].style.background = "#66ffff";
         y[i].disabled = true;
         thisObj.countbox++;
-        console.log(thisObj);
         thisObj.checkWin(this);//Click Function this
         thisObj.togglePlayer();
       });
     }
   }
+
   //Switch Player
   togglePlayer() {
     if (this.currPlayer === "X") {
@@ -58,7 +59,8 @@ class Tictac {
   checkWin(_button) {
     let x = _button.getAttribute("id");
     let y = parseInt(x.split("_")[1]);
-    let count = 0;
+    let count;
+    let isWinnerDecided = false;
     let winningCond = [
       [0, 1, 2],
       [0, 3, 6],
@@ -78,20 +80,18 @@ class Tictac {
           if (buttonText == this.currPlayer) {
             count++;
             this.winplayer = this.currPlayer;
-            console.log(count);
           }
         }
-        if (count == 3 || this.countbox == 9 && count == 3){
-            setTimeout(() => {
-              alert(this.winplayer + " player win");
-            }, 50);}
-        
+        if (count === 3){
+          isWinnerDecided = true;
+            winnerBox.innerHTML="Winner Winner Chicken Dinner Player: " + this.winplayer;
+          }
       }
     }
-    if (this.countbox == 9 && count != 3){
-          setTimeout(() => {
-            alert("Draw");
-          }, 150);}
+    if (this.countbox === 9 && !isWinnerDecided){
+      winnerBox.innerHTML="No One Wins Better Luck Next Time";  
+    }
   }
 }
+
 new Tictac();
