@@ -3,31 +3,31 @@ h1 {
 }
 
 .mainBox{
-    height:300px;
-    width:300px;
-    margin:auto;
-    border:1px solid;
+    position: relative;
+    height: 300px;
+    width: 300px;
+    margin: auto;
+    border: 1px solid;
 }
 
 .box{
-    height:100px;
-    width:100px;
+    height: 100px;
+    width:  100px;
     display: inline-block;
-    border:1px solid;
-    padding:1px;
-    vertical-align:bottom;
+    border: 1px solid;
+    padding: 1px;
+    vertical-align: bottom;
     background: lightblue;
     color: green;
     font-size: 150%;
 }
 
 #winnerBox{
-    height:50px;
-    width:700px;
-    top: 50%;
-    left: 50%;
-    margin-left: 450px;
-    margin-top: 50px;
+    position: relative;
+    height: 50px;
+    width: 700px;
+    text-align: center;
+    margin: auto;
     font-size: 250%;
     color: rgb(96, 221, 96);
        
