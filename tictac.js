@@ -26,21 +26,20 @@ class Tictac {
     winnerBox.setAttribute("id", "winnerBox");
     document.body.appendChild(mainBox);
     document.body.appendChild(winnerBox);
-    
   }
 
   gameStart() {
     let x = document.getElementsByClassName("box");
-    let y = Array.from(x);//Converting nodelist into Array
+    let y = Array.from(x); //Converting nodelist into Array
     const thisObj = this;
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < y.length; i++) {
       y[i].addEventListener("click", function(e) {
         y[i].innerHTML = thisObj.currPlayer;
         if (y[i].innerHTML == "X") y[i].style.background = " #ffff99";
         else y[i].style.background = "#66ffff";
         y[i].disabled = true;
         thisObj.countbox++;
-        thisObj.checkWin(this);//Click Function this
+        thisObj.checkWin(this); //Click Function this
         thisObj.togglePlayer();
       });
     }
@@ -82,14 +81,23 @@ class Tictac {
             this.winplayer = this.currPlayer;
           }
         }
-        if (count === 3){
+        if (count === 3) {
           isWinnerDecided = true;
-            winnerBox.innerHTML="Winner Winner Chicken Dinner Player: " + this.winplayer;
-          }
+          winnerBox.innerHTML =
+            "Winner Winner Chicken Dinner Player: " + this.winplayer;
+          this.afterWin();
+        }
       }
     }
-    if (this.countbox === 9 && !isWinnerDecided){
-      winnerBox.innerHTML="No One Wins Better Luck Next Time";  
+    if (this.countbox === 9 && !isWinnerDecided) {
+      winnerBox.innerHTML = "No One Wins Better Luck Next Time";
+    }
+  }
+
+  afterWin() {
+    let b1 = Array.from(document.getElementsByClassName("box"));
+    for (let i = 0; i < b1.length; i++) {
+      b1[i].style.pointerEvents = "none";
     }
   }
 }
